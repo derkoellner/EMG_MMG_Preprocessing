@@ -1,3 +1,19 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
+requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "emg-mmg-preprocessing"
+version = "0.1.0"
+description = "Reusable EMG/MMG preprocessing pipeline with NIH pyctf"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=2.2.6",
+    "scipy>=1.15.3",
+    "matplotlib>=3.10.3",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/derkoellner/EMG_MMG_Preprocessing"
+"Source" = "https://github.com/derkoellner/EMG_MMG_Preprocessing"
