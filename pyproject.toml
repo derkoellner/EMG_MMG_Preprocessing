@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "emg-mmg-preprocessing-pipeline"
+version = "0.1.0"
+description = "EMG and MMG loading and data preprocessing pipeline"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Jonas Koellner", email = "jonas.koellner@iss.uni-stuttgart.de" }]
+requires-python = ">=3.8"
+dependencies = [
+  "pandas>=1.5",
+  "numpy>=1.24",
+  # add any other runtime dependencies
+]
+
+[project.urls]
+"Homepage" = "https://github.com/derkoellner/EMG_MMG_Preprocessing"
+"Source"   = "https://github.com/derkoellner/EMG_MMG_Preprocessing.git"
