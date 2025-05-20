@@ -3,6 +3,8 @@ import numpy as np
 from scipy.io import loadmat, matlab
 from pyctf.dsopen import dsopen
 
+# For shits n giggles
+
 def load_mne_raw(filepath: str, picks: str = None, return_fs: bool = False):
     raw = mne.io.read_raw_fif(filepath, preload=True)
 
