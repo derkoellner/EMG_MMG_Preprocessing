@@ -1,0 +1,8 @@
+include LICENSE
+include README.md
+
+# Include your Python source code
+recursive-include preprocessing_pipeline *
+
+# Include NIH pyctf native code
+recursive-include vendor/pyctf *
