@@ -14,7 +14,9 @@ class CustomBuild(_build_py):
 setup(
     name="emg-mmg-preprocessing",
     version="0.1.0",
-    packages=find_packages(include=["preprocessing_pipeline", "pyctf", "pyctf.*"]),
+    packages=find_packages(include=[
+        "preprocessing_pipeline",
+        "pyctf",]),
     include_package_data=True,
     zip_safe=False,
     cmdclass={
