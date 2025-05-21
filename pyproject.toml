@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "emg-mmg-preprocessing"
 version = "0.1.0"
-description = "Reusable EMG/MMG preprocessing pipeline with NIH pyctf"
+description = "Reusable EMG/MMG preprocessing pipeline"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
@@ -13,6 +13,13 @@ dependencies = [
     "scipy>=1.15",
     "matplotlib>=3.10",
     "mne>=1.9.0",
+    "pyctf @ https://github.com/derkoellner/pyctf/releases/download/v0.1.1/pyctf-0.1.0-cp310-cp310-linux_x86_64.whl"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = [
+    "preprocessing_pipeline",
 ]
 
 [project.urls]
