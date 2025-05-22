@@ -3,6 +3,27 @@ from scipy.signal import stft
 
 from .utils import _check_signal_dim
 
+def prepare_spectrogram(data: np.ndarray,
+                        window_length: int,
+                        window: str,
+                        hop: int,
+                        fs: int,
+                        f_max: int,
+                        log: bool = True):
+    spectrogram_data = None
+
+    for idx, trial in enumerate(data):
+        spec, f, t = calculate_spectrogram(trial, window_length=window_length, fs=fs, f_max=f_max, hop=hop, window=window, log=log)
+        if spectrogram_data is None:
+            n_channels, n_freq_bins, n_t_bins = spec.shape
+            trials = data.shape[0]
+            spectrogram_data = np.empty(shape=(trials, n_channels, n_freq_bins, n_t_bins))
+        
+        spectrogram_data[idx,:,:,:] = spec
+        print(f'Finished Trial {idx}')
+
+    return spectrogram_data
+
 def calculate_spectrogram(data: np.ndarray,             # E/MMG Data
                           window_length: int = 200,     # Sliding window length
                           window: str = 'hann',         # Window type, possible are 'hann', 'hamming', 'gaussian'
@@ -18,14 +39,9 @@ def calculate_spectrogram(data: np.ndarray,             # E/MMG Data
     for channel in data:
         f, t, Zxx = stft(channel, fs=fs, nperseg=window_length, noverlap=noverlap, window=window)
 
-        # Zxx = np.square(np.abs(Zxx))
-
         freq_mask = f <= f_max
         f = f[freq_mask]
         Zxx = np.abs(Zxx[freq_mask,:])**2
-
-        # Zxx = Zxx[f <= f_max,:]
-        # f = f[f <= f_max]
 
         if log:
             Zxx = np.log1p(Zxx)
